@@ -237,7 +237,7 @@ def add_youtube_video(video_id, title, caption):
                 border-radius: 15px; color: white;">
         <h4 style="margin-bottom: 15px; text-align: center;">{title}</h4>
         <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-            <iframe src="https://www.youtube.com/embed/{video_id}" 
+            <iframe src="https://www.youtube.com/embed/{daWr9xnkKS4?t=3}" 
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px;"
                     frameborder="0" allowfullscreen>
             </iframe>
