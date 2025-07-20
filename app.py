@@ -455,7 +455,7 @@ def show_pitstop_strategy():
     
     with col2:
         # Pitstop image
-        st.image("https://images.unsplash.com/photo-1558618523-413c03c8ee91?w=500", 
+        st.image("https://static01.nyt.com/images/2025/04/12/multimedia/12sp-bahrain-pitstops-inyt-02-bmht/12sp-bahrain-pitstops-inyt-02-bmht-articleLarge.jpg?quality=75&auto=webp&disable=upscale", 
                 caption="F1 Pitstop in Action", use_column_width=True)
     
     # Strategy types
@@ -527,7 +527,7 @@ def show_championship_system():
         st.dataframe(points_df, use_container_width=True, hide_index=True)
     
     with col2:
-        st.image("https://images.unsplash.com/photo-1584464491274-d8427f386c19?w=500", 
+        st.image("https://imagenes.elpais.com/resizer/v2/A3OLTXXSQ5ND5NDX27URGR4ERA.jpg?auth=c1be0d01ba0e241bd3f1d556fa23ef2a49a6f9f43a037cab4c52ab9463249f7a&width=1200", 
                 caption="Championship Trophy", use_column_width=True)
     
     # Additional points
