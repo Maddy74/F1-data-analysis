@@ -101,9 +101,26 @@ def add_bg_video():
         margin: 20px 0;
     }
     
-    .stSelectbox > div > div {
-        background-color: #f0f2f6;
-        border-radius: 10px;
+    .educational-card {
+        background: linear-gradient(135deg, #2196F3 0%, #64B5F6 100%);
+        border-radius: 15px;
+        padding: 20px;
+        color: white;
+        margin: 15px 0;
+        box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
+    }
+    
+    .term-card {
+        background: linear-gradient(135deg, #9C27B0 0%, #BA68C8 100%);
+        border-radius: 15px;
+        padding: 20px;
+        color: white;
+        margin: 10px 0;
+        transition: transform 0.3s ease;
+    }
+    
+    .term-card:hover {
+        transform: translateY(-3px);
     }
     
     .main-header {
@@ -115,22 +132,101 @@ def add_bg_video():
         margin-bottom: 2rem;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
+    
+    .stSelectbox > div > div {
+        background-color: #f0f2f6;
+        border-radius: 10px;
+    }
     </style>
     """, unsafe_allow_html=True)
 
-def get_driver_images():
-    """Return dictionary of driver images"""
+def get_enhanced_driver_images():
+    """Return comprehensive dictionary of driver images with team info"""
     driver_images = {
-        "Max Verstappen": "https://media.formula1.com/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.jpg.transform/1col/image.jpg",
-        "Lando Norris": "https://media.formula1.com/content/dam/fom-website/drivers/L/LANNOR01_Lando_Norris/lannor01.jpg.transform/1col/image.jpg",
-        "Charles Leclerc": "https://media.formula1.com/content/dam/fom-website/drivers/C/CHALEC01_Charles_Leclerc/chalec01.jpg.transform/1col/image.jpg",
-        "Oscar Piastri": "https://media.formula1.com/content/dam/fom-website/drivers/O/OSCPIA01_Oscar_Piastri/oscpia01.jpg.transform/1col/image.jpg",
-        "Lewis Hamilton": "https://media.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.jpg.transform/1col/image.jpg",
-        "George Russell": "https://media.formula1.com/content/dam/fom-website/drivers/G/GEORUS01_George_Russell/georus01.jpg.transform/1col/image.jpg",
-        "Sergio Perez": "https://media.formula1.com/content/dam/fom-website/drivers/S/SERPER01_Sergio_Perez/serper01.jpg.transform/1col/image.jpg",
-        "Fernando Alonso": "https://media.formula1.com/content/dam/fom-website/drivers/F/FERALO01_Fernando_Alonso/feralo01.jpg.transform/1col/image.jpg",
-        "Carlos Sainz": "https://media.formula1.com/content/dam/fom-website/drivers/C/CARSAI01_Carlos_Sainz/carsai01.jpg.transform/1col/image.jpg",
-        "Alexander Albon": "https://media.formula1.com/content/dam/fom-website/drivers/A/ALEALB01_Alexander_Albon/alealb01.jpg.transform/1col/image.jpg"
+        "Max Verstappen": {
+            "image": "https://media.formula1.com/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.jpg.transform/1col/image.jpg",
+            "team": "Red Bull Racing",
+            "nationality": "Dutch",
+            "number": "1",
+            "championships": "3"
+        },
+        "Lando Norris": {
+            "image": "https://media.formula1.com/content/dam/fom-website/drivers/L/LANNOR01_Lando_Norris/lannor01.jpg.transform/1col/image.jpg",
+            "team": "McLaren",
+            "nationality": "British",
+            "number": "4",
+            "championships": "0"
+        },
+        "Charles Leclerc": {
+            "image": "https://media.formula1.com/content/dam/fom-website/drivers/C/CHALEC01_Charles_Leclerc/chalec01.jpg.transform/1col/image.jpg",
+            "team": "Ferrari",
+            "nationality": "Monégasque",
+            "number": "16",
+            "championships": "0"
+        },
+        "Oscar Piastri": {
+            "image": "https://media.formula1.com/content/dam/fom-website/drivers/O/OSCPIA01_Oscar_Piastri/oscpia01.jpg.transform/1col/image.jpg",
+            "team": "McLaren",
+            "nationality": "Australian",
+            "number": "81",
+            "championships": "0"
+        },
+        "Lewis Hamilton": {
+            "image": "https://media.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.jpg.transform/1col/image.jpg",
+            "team": "Ferrari",  # 2025 move to Ferrari
+            "nationality": "British",
+            "number": "44",
+            "championships": "7"
+        },
+        "George Russell": {
+            "image": "https://media.formula1.com/content/dam/fom-website/drivers/G/GEORUS01_George_Russell/georus01.jpg.transform/1col/image.jpg",
+            "team": "Mercedes",
+            "nationality": "British",
+            "number": "63",
+            "championships": "0"
+        },
+        "Sergio Perez": {
+            "image": "https://media.formula1.com/content/dam/fom-website/drivers/S/SERPER01_Sergio_Perez/serper01.jpg.transform/1col/image.jpg",
+            "team": "Red Bull Racing",
+            "nationality": "Mexican",
+            "number": "11",
+            "championships": "0"
+        },
+        "Fernando Alonso": {
+            "image": "https://media.formula1.com/content/dam/fom-website/drivers/F/FERALO01_Fernando_Alonso/feralo01.jpg.transform/1col/image.jpg",
+            "team": "Aston Martin",
+            "nationality": "Spanish",
+            "number": "14",
+            "championships": "2"
+        },
+        "Carlos Sainz": {
+            "image": "https://media.formula1.com/content/dam/fom-website/drivers/C/CARSAI01_Carlos_Sainz/carsai01.jpg.transform/1col/image.jpg",
+            "team": "Williams",  # 2025 move to Williams
+            "nationality": "Spanish",
+            "number": "55",
+            "championships": "0"
+        },
+        "Alexander Albon": {
+            "image": "https://media.formula1.com/content/dam/fom-website/drivers/A/ALEALB01_Alexander_Albon/alealb01.jpg.transform/1col/image.jpg",
+            "team": "Williams",
+            "nationality": "Thai",
+            "number": "23",
+            "championships": "0"
+        },
+        "Nico Hulkenberg": {
+            "image": "https://media.formula1.com/content/dam/fom-website/drivers/N/NICHUL01_Nico_Hulkenberg/nichul01.jpg.transform/1col/image.jpg",
+            "team": "Haas",
+            "nationality": "German",
+            "number": "27",
+            "championships": "0"
+        },
+        "Pierre Gasly": {
+            "image": "https://media.formula1.com/content/dam/fom-website/drivers/P/PIEGAS01_Pierre_Gasly/piegas01.jpg.transform/1col/image.jpg",
+            "team": "Alpine",
+            "nationality": "French",
+            "number": "10",
+            "championships": "0"
+        }
     }
     return driver_images
 
@@ -150,15 +246,307 @@ def add_youtube_video(video_id, title, caption):
     </div>
     """, unsafe_allow_html=True)
 
+# F1 EDUCATIONAL CONTENT FUNCTIONS
+
+def show_f1_basics():
+    """Educational section about Formula 1 for beginners"""
+    add_bg_video()
+    
+    # Main header
+    st.markdown("""
+    <div style="background: linear-gradient(135deg, #FF1E1E 0%, #FF6B6B 50%, #FF8A8A 100%); 
+                border-radius: 20px; padding: 30px; text-align: center; margin-bottom: 30px;">
+        <h1 style="color: white; font-size: 3rem; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+            🏎️ Welcome to Formula 1
+        </h1>
+        <p style="color: white; font-size: 1.2rem; margin: 10px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">
+            Your Complete Guide to the World's Premier Racing Championship
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Create tabs for different sections
+    tab1, tab2, tab3, tab4 = st.tabs(["🏁 What is F1?", "🔧 Technical Terms", "🏎️ Pitstops & Strategy", "🏆 Championship System"])
+    
+    with tab1:
+        show_what_is_f1()
+    
+    with tab2:
+        show_technical_terms()
+    
+    with tab3:
+        show_pitstop_strategy()
+    
+    with tab4:
+        show_championship_system()
+
+def show_what_is_f1():
+    """Explain what Formula 1 is"""
+    st.header("🏁 What is Formula 1?")
+    
+    # Main explanation with image
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        st.markdown("""
+        **Formula 1 (F1)** is the highest class of international racing for open-wheel single-seater formula racing cars. 
+        It's considered the pinnacle of motorsport, featuring:
+        
+        ### Key Features:
+        - **20 Drivers** competing across 10 teams
+        - **Race Weekends** held on circuits around the world
+        - **Speeds** reaching over 300 km/h (186 mph)
+        - **Advanced Technology** with hybrid power units
+        - **Global Championship** with races from March to December
+        
+        ### What Makes F1 Special:
+        - **Engineering Excellence**: Cars cost millions and use cutting-edge technology
+        - **Driver Skill**: Only the world's best drivers compete
+        - **Strategy**: Teams must balance speed, tire wear, and fuel consumption
+        - **Teamwork**: Success requires perfect coordination between driver, engineers, and pit crew
+        """)
+    
+    with col2:
+        # F1 car image
+        st.image("https://cdn.pixabay.com/photo/2017/08/07/14/02/formula-1-2604251_1280.jpg", 
+                caption="Formula 1 Racing Car", use_column_width=True)
+    
+    # Race weekend structure
+    st.subheader("🏁 Race Weekend Structure")
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.markdown("""
+        <div class="educational-card" style="background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);">
+            <h3>🚗 Practice Sessions</h3>
+            <p><strong>Friday:</strong> FP1 & FP2</p>
+            <p><strong>Saturday:</strong> FP3</p>
+            <p>Drivers learn the track and test car setups</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class="educational-card" style="background: linear-gradient(135deg, #FF9800 0%, #FFB74D 100%);">
+            <h3>⏱️ Qualifying</h3>
+            <p><strong>Saturday:</strong> Q1, Q2, Q3</p>
+            <p>Determines starting grid positions for Sunday's race</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col3:
+        st.markdown("""
+        <div class="educational-card" style="background: linear-gradient(135deg, #F44336 0%, #EF5350 100%);">
+            <h3>🏆 Race Day</h3>
+            <p><strong>Sunday:</strong> The Main Event</p>
+            <p>Points awarded to top 10 finishers</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+def show_technical_terms():
+    """Explain key F1 technical terms"""
+    st.header("🔧 Essential F1 Technical Terms")
+    
+    # Technical terms with explanations and images
+    terms = [
+        {
+            "term": "DRS (Drag Reduction System)",
+            "definition": "A movable rear wing that reduces drag and increases top speed on straights",
+            "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500",
+            "usage": "Used in designated DRS zones when within 1 second of the car ahead"
+        },
+        {
+            "term": "Pole Position",
+            "definition": "Starting position for the fastest qualifier - first place on the starting grid",
+            "image": "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=500",
+            "usage": "Awarded to the driver with the fastest lap time in Q3"
+        },
+        {
+            "term": "Fastest Lap",
+            "definition": "Bonus point awarded to the driver who sets the fastest lap time during the race",
+            "image": "https://images.unsplash.com/photo-1566473965997-3de9c817e938?w=500",
+            "usage": "Must finish in the top 10 to receive the bonus point"
+        },
+        {
+            "term": "Safety Car",
+            "definition": "A car that leads the field at reduced speed during dangerous conditions",
+            "image": "https://images.unsplash.com/photo-1558618047-3c80ac1b90b8?w=500",
+            "usage": "Deployed when there's an accident or debris on track"
+        }
+    ]
+    
+    for i, term_info in enumerate(terms):
+        col1, col2 = st.columns([1, 2])
+        
+        with col1:
+            st.image(term_info["image"], caption=term_info["term"], use_column_width=True)
+        
+        with col2:
+            st.markdown(f"""
+            <div class="term-card">
+                <h3>{term_info["term"]}</h3>
+                <p><strong>What it is:</strong> {term_info["definition"]}</p>
+                <p><strong>How it's used:</strong> {term_info["usage"]}</p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        if i < len(terms) - 1:
+            st.markdown("---")
+
+def show_pitstop_strategy():
+    """Explain pitstops and strategy"""
+    st.header("🏎️ Pitstops & Race Strategy")
+    
+    # Pitstop explanation
+    st.subheader("🔧 What is a Pitstop?")
+    
+    col1, col2 = st.columns([3, 2])
+    
+    with col1:
+        st.markdown("""
+        A **pitstop** is when a driver enters the pit lane to:
+        - **Change tires** (mandatory at least once per race)
+        - **Refuel** (not allowed since 2010)
+        - **Fix damage** or adjust car settings
+        - **Serve penalties** if required
+        
+        ### The Famous "Box Box" Call:
+        - **"Box, box, box"** is the radio call telling a driver to enter the pits
+        - **Why "box"?** It comes from the German word "Boxenstopp" (pit stop)
+        - **Timing is crucial** - teams must decide the perfect moment to pit
+        
+        ### Pitstop Records:
+        - **Fastest pitstop**: Under 2 seconds for a tire change
+        - **Typical time**: 2.5-3.5 seconds
+        - **Crew members**: Up to 20 people work on the car
+        """)
+    
+    with col2:
+        # Pitstop image
+        st.image("https://images.unsplash.com/photo-1558618523-413c03c8ee91?w=500", 
+                caption="F1 Pitstop in Action", use_column_width=True)
+    
+    # Strategy types
+    st.subheader("🎯 Race Strategy Types")
+    
+    strategies = [
+        {
+            "name": "One-Stop Strategy",
+            "description": "Start on harder tires, pit once for softer tires",
+            "pros": "Less time lost in pits, track position advantage",
+            "cons": "Tires may degrade significantly at the end"
+        },
+        {
+            "name": "Two-Stop Strategy", 
+            "description": "Make two pitstops with fresher tires for each stint",
+            "pros": "Always have relatively fresh tires",
+            "cons": "More time lost in pits, need to overtake more"
+        },
+        {
+            "name": "Undercut Strategy",
+            "description": "Pit before your rival to gain track position",
+            "pros": "Fresh tires give pace advantage",
+            "cons": "Risk if the gap isn't big enough"
+        },
+        {
+            "name": "Overcut Strategy",
+            "description": "Stay out longer than rivals before pitting",
+            "pros": "Use tire advantage after others pit",
+            "cons": "Risk of tire degradation"
+        }
+    ]
+    
+    cols = st.columns(2)
+    
+    for i, strategy in enumerate(strategies):
+        with cols[i % 2]:
+            st.markdown(f"""
+            <div class="term-card">
+                <h4>{strategy["name"]}</h4>
+                <p><strong>Strategy:</strong> {strategy["description"]}</p>
+                <p><strong>✅ Pros:</strong> {strategy["pros"]}</p>
+                <p><strong>❌ Cons:</strong> {strategy["cons"]}</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+def show_championship_system():
+    """Explain the championship points system"""
+    st.header("🏆 Championship Points System")
+    
+    # Points explanation
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        st.markdown("""
+        ### How Points Are Awarded:
+        
+        F1 uses a **points-based championship system** where:
+        - **Only the top 10 finishers** score points in each race
+        - **Consistency is key** - regular points finishes matter more than occasional wins
+        - **Two championships** are awarded: Drivers' and Constructors' (Teams)
+        """)
+        
+        # Points table
+        points_data = {
+            'Position': ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th'],
+            'Points': [25, 18, 15, 12, 10, 8, 6, 4, 2, 1]
+        }
+        points_df = pd.DataFrame(points_data)
+        st.dataframe(points_df, use_container_width=True, hide_index=True)
+    
+    with col2:
+        st.image("https://images.unsplash.com/photo-1584464491274-d8427f386c19?w=500", 
+                caption="Championship Trophy", use_column_width=True)
+    
+    # Additional points
+    st.subheader("🎯 Bonus Points")
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.markdown("""
+        <div class="educational-card" style="background: linear-gradient(135deg, #FFD700 0%, #FFF176 100%); color: black;">
+            <h4>🏁 Fastest Lap</h4>
+            <h2>+1 Point</h2>
+            <p>Must finish in top 10</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class="educational-card" style="background: linear-gradient(135deg, #4CAF50 0%, #81C784 100%);">
+            <h4>🏁 Sprint Race</h4>
+            <h2>Points Available</h2>
+            <p>8-7-6-5-4-3-2-1 for top 8</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col3:
+        st.markdown("""
+        <div class="educational-card" style="background: linear-gradient(135deg, #FF5722 0%, #FF8A65 100%);">
+            <h4>🏁 Sprint Shootout</h4>
+            <h2>Pole Position</h2>
+            <p>Determines sprint grid</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+# VIDEO FUNCTIONS
+
 def show_f1_videos():
-    """Display F1 videos section"""
+    """Display F1 videos section with the user's provided link"""
     st.header("🎥 Formula 1 2025 Season Highlights")
+    
+    # Featured video using the user's provided YouTube link
+    st.subheader("🏆 Featured: 2025 British Grand Prix Highlights")
+    add_youtube_video("daWr9xnkKS4", "🏁 2025 British Grand Prix Race Highlights", 
+                      "Catch the very best moments from an instant classic at Silverstone with Lando Norris taking the victory!")
     
     # Create tabs for different video categories
     video_tab1, video_tab2, video_tab3, video_tab4 = st.tabs(["🏁 Season Highlights", "🏆 Race Wins", "📈 Championship Battle", "🎯 Driver Focus"])
     
     with video_tab1:
-        st.subheader("2025 Season Highlights")
+        st.subheader("2025 Season Best Moments")
         
         col1, col2 = st.columns(2)
         with col1:
@@ -188,52 +576,75 @@ def show_f1_videos():
         with col2:
             add_youtube_video("oHg5SJYRHA0", "🚀 Rising Stars", "The next generation of F1 talent")
 
-def show_top_drivers_with_images(season_data, season_year):
-    """Display top 5 drivers with their images and stats"""
-    st.subheader(f"🏆 Top 5 Drivers - {season_year} Season")
+# DRIVER PROFILE FUNCTIONS
+
+def show_enhanced_driver_profiles(season_data, season_year):
+    """Enhanced driver profiles with detailed information"""
+    st.subheader(f"🏆 Driver Profiles - {season_year} Season")
     
-    # Get top 5 drivers
-    top_drivers = season_data.groupby('Driver')['Points'].sum().sort_values(ascending=False).head(5)
-    driver_images = get_driver_images()
+    # Get top 10 drivers
+    top_drivers = season_data.groupby('Driver')['Points'].sum().sort_values(ascending=False).head(10)
+    enhanced_driver_images = get_enhanced_driver_images()
     
-    # Create columns for driver cards
-    cols = st.columns(5)
-    
-    for idx, (driver, points) in enumerate(top_drivers.items()):
-        with cols[idx]:
-            # Driver card with image
-            st.markdown(f"""
-            <div class="driver-card">
-                <h4 style="text-align: center; margin-bottom: 15px;">#{idx+1}</h4>
-                <h3 style="text-align: center; margin-bottom: 15px; font-size: 1.1rem;">{driver}</h3>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            # Try to display driver image
-            if driver in driver_images:
-                try:
-                    st.image(driver_images[driver], width=120, use_column_width=False)
-                except:
-                    st.image("https://via.placeholder.com/120x120?text=F1", width=120)
-            else:
-                st.image("https://via.placeholder.com/120x120?text=F1", width=120)
-            
-            # Driver stats
-            driver_data = season_data[season_data['Driver'] == driver]
-            wins = len(driver_data[driver_data['Position'] == 1])
-            podiums = len(driver_data[driver_data['Position'] <= 3])
-            avg_pos = driver_data['Position'].mean()
-            
-            st.markdown(f"""
-            <div style="background: rgba(255,255,255,0.1); border-radius: 10px; padding: 15px; margin-top: -10px;">
-                <div style="text-align: center; color: white;">
-                    <h2 style="color: #FFD700; margin: 5px 0; font-size: 1.5rem;">{points:.0f} pts</h2>
-                    <p style="margin: 3px 0; font-size: 0.9rem;"><strong>Wins:</strong> {wins}</p>
-                    <p style="margin: 3px 0; font-size: 0.9rem;"><strong>Podiums:</strong> {podiums}</p>
-                    <p style="margin: 3px 0; font-size: 0.9rem;"><strong>Avg Pos:</strong> {avg_pos:.1f}</p>
+    # Display in rows of 5
+    for row in range(0, len(top_drivers), 5):
+        cols = st.columns(5)
+        drivers_in_row = list(top_drivers.items())[row:row+5]
+        
+        for idx, (driver, points) in enumerate(drivers_in_row):
+            with cols[idx]:
+                driver_info = enhanced_driver_images.get(driver, {})
+                
+                # Enhanced driver card
+                st.markdown(f"""
+                <div class="driver-card">
+                    <div style="text-align: center;">
+                        <h4 style="margin-bottom: 10px;">#{row + idx + 1} • #{driver_info.get('number', 'N/A')}</h4>
+                        <h3 style="margin-bottom: 15px; font-size: 1.1rem;">{driver}</h3>
                 </div>
-            </div>
-            """, unsafe_allow_html=True)
+                """, unsafe_allow_html=True)
+                
+                # Driver image
+                if driver_info.get('image'):
+                    try:
+                        st.image(driver_info['image'], width=120, use_column_width=False)
+                    except:
+                        st.image("https://via.placeholder.com/120x120?text=F1", width=120)
+                else:
+                    st.image("https://via.placeholder.com/120x120?text=F1", width=120)
+                
+                # Driver stats and info
+                driver_data = season_data[season_data['Driver'] == driver]
+                wins = len(driver_data[driver_data['Position'] == 1])
+                podiums = len(driver_data[driver_data['Position'] <= 3])
+                avg_pos = driver_data['Position'].mean()
+                
+                st.markdown(f"""
+                    <div style="background: rgba(255,255,255,0.15); border-radius: 15px; 
+                                padding: 15px; margin-top: -10px;">
+                        <div style="text-align: center;">
+                            <p style="margin: 3px 0; font-size: 0.9rem;">
+                                <strong>🏁 Team:</strong> {driver_info.get('team', 'Unknown')}
+                            </p>
+                            <p style="margin: 3px 0; font-size: 0.9rem;">
+                                <strong>🌍 Country:</strong> {driver_info.get('nationality', 'Unknown')}
+                            </p>
+                            <p style="margin: 3px 0; font-size: 0.9rem;">
+                                <strong>🏆 Championships:</strong> {driver_info.get('championships', '0')}
+                            </p>
+                            <hr style="margin: 10px 0; opacity: 0.3;">
+                            <h2 style="color: #FFD700; margin: 8px 0; font-size: 1.5rem;">{points:.0f} pts</h2>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                <span><strong>Wins:</strong> {wins}</span>
+                                <span><strong>Podiums:</strong> {podiums}</span>
+                                <span><strong>Avg:</strong> {avg_pos:.1f}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+# MAIN DASHBOARD FUNCTIONS
 
 def show_enhanced_overview(season_2024, season_2025):
     """Enhanced overview with videos and driver images"""
@@ -261,36 +672,36 @@ def show_enhanced_overview(season_2024, season_2025):
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
-        st.markdown("""
+        st.markdown(f"""
         <div class="metric-container">
-            <h2 style="margin: 0; font-size: 2rem;">{}</h2>
+            <h2 style="margin: 0; font-size: 2rem;">{len(season_2024['Track'].unique())}</h2>
             <p style="margin: 5px 0;">2024 Races</p>
         </div>
-        """.format(len(season_2024['Track'].unique())), unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
     
     with col2:
-        st.markdown("""
+        st.markdown(f"""
         <div class="metric-container">
-            <h2 style="margin: 0; font-size: 2rem;">{}</h2>
+            <h2 style="margin: 0; font-size: 2rem;">{len(season_2025['Track'].unique())}</h2>
             <p style="margin: 5px 0;">2025 Races</p>
         </div>
-        """.format(len(season_2025['Track'].unique())), unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
     
     with col3:
-        st.markdown("""
+        st.markdown(f"""
         <div class="metric-container">
-            <h2 style="margin: 0; font-size: 2rem;">{}</h2>
+            <h2 style="margin: 0; font-size: 2rem;">{len(pd.concat([season_2024, season_2025])['Driver'].unique())}</h2>
             <p style="margin: 5px 0;">Total Drivers</p>
         </div>
-        """.format(len(pd.concat([season_2024, season_2025])['Driver'].unique())), unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
     
     with col4:
-        st.markdown("""
+        st.markdown(f"""
         <div class="metric-container">
-            <h2 style="margin: 0; font-size: 2rem;">{}</h2>
+            <h2 style="margin: 0; font-size: 2rem;">{len(pd.concat([season_2024, season_2025])['Team'].unique())}</h2>
             <p style="margin: 5px 0;">Total Teams</p>
         </div>
-        """.format(len(pd.concat([season_2024, season_2025])['Team'].unique())), unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
     
     st.markdown("<br>", unsafe_allow_html=True)
     
@@ -308,16 +719,17 @@ def show_enhanced_overview(season_2024, season_2025):
         points_2025 = season_2025.groupby('Driver')['Points'].sum().max()
         st.success(f"**2025 Leader:** {leader_2025} ({points_2025:.0f} points)")
     
-    # Featured video section
-    st.header("🎥 Featured Video")
-    add_youtube_video("6nR6_NLQ6eg", "🏁 F1 2025 Season Highlights", "The most thrilling moments from the current Formula 1 season")
+    # Featured video section with user's provided link
+    st.header("🎥 Latest Race Highlight")
+    add_youtube_video("daWr9xnkKS4", "🏁 2025 British Grand Prix Highlights", 
+                      "Lando Norris wins at home! Watch the best moments from a thrilling wet race at Silverstone")
     
-    # Top drivers with images
+    # Enhanced driver profiles
     col1, col2 = st.columns(2)
     with col1:
-        show_top_drivers_with_images(season_2024, 2024)
+        show_enhanced_driver_profiles(season_2024, 2024)
     with col2:
-        show_top_drivers_with_images(season_2025, 2025)
+        show_enhanced_driver_profiles(season_2025, 2025)
 
 def show_driver_analysis(season_2024, season_2025):
     """Driver performance analysis page"""
@@ -733,6 +1145,8 @@ def show_advanced_analytics(season_2024, season_2025):
     
     st.dataframe(season_stats, use_container_width=True)
 
+# MAIN APPLICATION FUNCTION
+
 def main():
     """Main application function"""
     # Load data
@@ -749,7 +1163,7 @@ def main():
     
     analysis_option = st.sidebar.selectbox(
         "Choose Analysis Section:",
-        ["📈 Enhanced Overview", "🏁 Driver Performance", "🏭 Team Analysis", 
+        ["📈 Enhanced Overview", "📚 F1 Basics Guide", "🏁 Driver Performance", "🏭 Team Analysis", 
          "🏁 Race Analysis", "🏁 Track Performance", "📊 Advanced Analytics", "🎥 Video Gallery"],
         help="Select different sections to explore F1 data"
     )
@@ -758,11 +1172,21 @@ def main():
     st.sidebar.markdown("---")
     st.sidebar.markdown("### 🏎️ Dashboard Features")
     st.sidebar.markdown("""
-    - **Live Data Analysis** - Real-time F1 statistics
-    - **Interactive Visualizations** - Dynamic charts and graphs  
-    - **Driver Profiles** - Detailed performance metrics
-    - **Video Highlights** - Season's best moments
-    - **Advanced Analytics** - Deep statistical insights
+    - **📚 F1 Basics Guide** - Perfect for newcomers to F1
+    - **📈 Live Data Analysis** - Real-time F1 statistics  
+    - **🏆 Driver Profiles** - Detailed performance with photos
+    - **🎥 Video Highlights** - Season's best moments including latest British GP
+    - **📊 Advanced Analytics** - Deep statistical insights
+    """)
+    
+    st.sidebar.markdown("---")
+    st.sidebar.markdown("### 🔰 New to Formula 1?")
+    st.sidebar.markdown("""
+    Start with the **F1 Basics Guide** to learn:
+    - What is Formula 1?
+    - Technical terms explained
+    - Pitstop strategies ("Box Box!")
+    - Championship system
     """)
     
     st.sidebar.markdown("---")
@@ -772,6 +1196,8 @@ def main():
     # Navigation routing
     if analysis_option == "📈 Enhanced Overview":
         show_enhanced_overview(season_2024, season_2025)
+    elif analysis_option == "📚 F1 Basics Guide":
+        show_f1_basics()
     elif analysis_option == "🎥 Video Gallery":
         show_f1_videos()
     elif analysis_option == "🏁 Driver Performance":
