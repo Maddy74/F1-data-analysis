@@ -339,7 +339,7 @@ def show_what_is_f1():
     
     with col2:
         # F1 car image
-        st.image("https://cdn.pixabay.com/photo/2017/08/07/14/02/formula-1-2604251_1280.jpg", 
+        st.image("https://media.formula1.com/image/upload/t_16by9South/c_lfill,w_3392/q_auto/v1740000000/fom-website/2024/Miscellaneous/1020084687-LAT-20240324-SUP2403_150328_83A0989.webp", 
                 caption="Formula 1 Racing Car", use_column_width=True)
     
     # Race weekend structure
