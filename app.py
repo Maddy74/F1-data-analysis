@@ -230,21 +230,27 @@ def get_enhanced_driver_images():
     }
     return driver_images
 
-def add_youtube_video(video_id, title, caption):
-    """Add YouTube video with custom styling"""
-    st.markdown(f"""
-    <div class="video-container" style="margin: 20px 0; padding: 15px; background: linear-gradient(135deg, #FF1E1E 0%, #FF6B6B 100%); 
-                border-radius: 15px; color: white;">
-        <h4 style="margin-bottom: 15px; text-align: center;">{title}</h4>
-        <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-            <video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px;" controls>
-  <source src="F1.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-        </div>
-        <p style="margin-top: 15px; font-size: 0.9rem; text-align: center; opacity: 0.9;">{caption}</p>
-    </div>
-    """, unsafe_allow_html=True)
+def show_local_video(video_path, caption=""):
+    """Display local video using Streamlit's native video function"""
+    try:
+        # Open and read the video file
+        video_file = open(video_path, 'rb')
+        video_bytes = video_file.read()
+        video_file.close()
+        
+        # Display using Streamlit's video function
+        st.video(video_bytes)
+        if caption:
+            st.caption(caption)
+            
+    except FileNotFoundError:
+        st.error(f"Video file not found: {video_path}")
+    except Exception as e:
+        st.error(f"Error loading video: {str(e)}")
+
+# Usage in your app:
+show_local_video("F1.mp4", "Formula 1 2025 Race Highlights")
+
 
 # F1 EDUCATIONAL CONTENT FUNCTIONS
 
