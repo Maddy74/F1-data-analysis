@@ -384,25 +384,25 @@ def show_technical_terms():
         {
             "term": "DRS (Drag Reduction System)",
             "definition": "A movable rear wing that reduces drag and increases top speed on straights",
-            "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500",
+            "image": "https://oversteer48.com/wp-content/uploads/2024/02/Bahrain-F1-track-DRS-zones-map-1024x805.jpg",
             "usage": "Used in designated DRS zones when within 1 second of the car ahead"
         },
         {
             "term": "Pole Position",
             "definition": "Starting position for the fastest qualifier - first place on the starting grid",
-            "image": "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=500",
+            "image": "https://cms-image-contents.s3-us-west-1.amazonaws.com/2024/pole-position-1719328139-r.jpg",
             "usage": "Awarded to the driver with the fastest lap time in Q3"
         },
         {
             "term": "Fastest Lap",
             "definition": "Bonus point awarded to the driver who sets the fastest lap time during the race",
-            "image": "https://images.unsplash.com/photo-1566473965997-3de9c817e938?w=500",
+            "image": "https://pbs.twimg.com/media/Dit31ZfXkAAPu-k.jpg:large",
             "usage": "Must finish in the top 10 to receive the bonus point"
         },
         {
             "term": "Safety Car",
             "definition": "A car that leads the field at reduced speed during dangerous conditions",
-            "image": "https://images.unsplash.com/photo-1558618047-3c80ac1b90b8?w=500",
+            "image": "https://cdn-9.motorsport.com/images/amp/YW7agwxY/s1000/formula-1-singapore-gp-2023-th-2.jpg",
             "usage": "Deployed when there's an accident or debris on track"
         }
     ]
